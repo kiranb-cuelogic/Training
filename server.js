@@ -1,29 +1,26 @@
-const http = require('http');
-const dotenv = require('dotenv');
-const io = require('socket.io')(http);	
-dotenv.load();
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
-// var server = require('http').createServer();
-// var io = require('socket.io')(server);
-// io.on('connection', function(client){
-//   client.on('event', function(data){});
-//   client.on('disconnect', function(){});
-// });
-// server.listen(3000);
-
-
-
-const server = http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello World!');
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function(socket){
-	socket.on('event', function(data){});
-  	socket.on('disconnect', function(){});
-  	console.log('a user connected');
+
+  console.log('a user connected');
+
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+    io.emit('chat message', msg);
+  });
+
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+
 });
 
-server.listen(process.env.PORT, function(){
-  	console.log('listening on :' + process.env.PORT);
+http.listen(3000, function(){
+  console.log('listening on *:3000');
 });

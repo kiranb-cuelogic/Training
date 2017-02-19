@@ -19,6 +19,7 @@
   "homepage": "https://github.com/kiranb-cuelogic/Training#readme",
   "dependencies": {
     "dotenv": "4.0.0",
+    "express": "4.10.2",
     "socket.io": "1.7.3"
   }
 }
