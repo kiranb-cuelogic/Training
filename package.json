@@ -1,29 +1,35 @@
 {
-  "name": "Training",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kiranb-cuelogic/Training.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kiranb-cuelogic/Training/issues"
-  },
-  "homepage": "https://github.com/kiranb-cuelogic/Training#readme",
-  "dependencies": {
-    "cors": "2.8.1",
-    "dotenv": "4.0.0",
-    "express": "4.10.2",
-    "nodemon": "1.11.0",
-    "passport": "0.3.2",
-    "socket.io": "1.7.3"
-  }
+    "name": "Training",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kiranb-cuelogic/Training.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/kiranb-cuelogic/Training/issues"
+    },
+    "homepage": "https://github.com/kiranb-cuelogic/Training#readme",
+    "dependencies": {
+        "cors": "2.8.1",
+        "dotenv": "4.0.0",
+        "express": "4.10.2",
+        "nodemon": "1.11.0",
+        "passport": "0.3.2",
+        "socket.io": "1.7.3",
+        "body-parser": "1.15.1",
+        "connect-redis": "3.0.2",
+        "express-handlebars": "3.0.0",
+        "express-session": "1.13.0",
+        "passport": "0.3.2",
+        "passport-local": "1.0.0"
+    }
 }
