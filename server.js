@@ -1,3 +1,9 @@
+// ps aux | awk '/node/{print $2}' | xargs kill -9
+
+
+// http://code.runnable.com/VKHrGJKvwo55gHL7/express-passport-js-login-and-register-for-node-js-and-hello-world
+// https://scotch.io/tutorials/easy-node-authentication-setup-and-local
+
 var express = require('express');
 var app = express();
 var port = process.env.PORT || 8080;
