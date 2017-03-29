@@ -1,29 +1,33 @@
-const http = require('http');
-const dotenv = require('dotenv');
-const io = require('socket.io')(http);	
-dotenv.load();
-
-// var server = require('http').createServer();
-// var io = require('socket.io')(server);
-// io.on('connection', function(client){
-//   client.on('event', function(data){});
-//   client.on('disconnect', function(){});
-// });
-// server.listen(3000);
+import mongoose from 'mongoose';
+import morgan from 'morgan';
+import app from './config/express';
+import config from './config/env';
 
 
+// use morgan to log requests to the console
+app.use(morgan('dev'));
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello World!');
+
+// Establish DB connection
+mongoose.connect(config.database);
+
+mongoose.connection.on('err', () => {
+    throw new Error(`unable to connect to database: ${config.database}`);
 });
 
-io.on('connection', function(socket){
-	socket.on('event', function(data){});
-  	socket.on('disconnect', function(){});
-  	console.log('a user connected');
+mongoose.connection.on('connected', () => {
+    console.log(`Connected to database: ${config.database}`);
 });
 
-server.listen(process.env.PORT, function(){
-  	console.log('listening on :' + process.env.PORT);
-});
+if (config.env === 'dev') {
+    mongoose.set('debug', true);
+}
+
+
+// Create server
+app.listen(config.port);
+console.log(`Express server running on port: ${config.port}(${config.env})`);
+
+
+// For unit testing
+export default app;
