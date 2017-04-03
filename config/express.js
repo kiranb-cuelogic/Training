@@ -9,21 +9,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+console.log(__dirname)
+app.set('views', './app/views');
+app.set('view engine', 'ejs');
+
+app.use(express.static('./public'));
 
 // mount all routes on /api path
 app.use('/api', routes);
-
-
-app.use((err, req, res, nxt) => {
-
-    res.status(err.status)
-        .json({
-            status: err.status,
-            message: err.message
-        });
-
-});
-
 
 app.use((err, req, res, nxt) => {
 
